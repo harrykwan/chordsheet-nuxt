@@ -88,10 +88,10 @@ async function transposechordsheet() {
 
 .chordfooter {
   position: fixed;
-  bottom: 5px;
-  right: 5px;
-  z-index: 999;
-  font-size: 28px;
+  bottom: 10px;
+  right: 10px;
+  z-index: 10;
+  font-size: 35px;
   color: #ab9103;
   opacity: 0.8;
 }
