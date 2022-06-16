@@ -1,0 +1,51 @@
+<template>
+  <div
+    class="theme-dark"
+    data-highlight="highlight-dark"
+    data-gradient="body-default"
+  >
+    <Meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <Meta name="apple-mobile-web-app-capable" content="yes" />
+    <Meta
+      name="apple-mobile-web-app-status-bar-style"
+      content="black-translucent"
+    />
+    <Meta
+      name="viewport"
+      content="width=device-width, initial-scale=1, minimum-scale=1, maximum-scale=1, viewport-fit=cover"
+    />
+    <Title>StickyMobile BootStrap</Title>
+    <Link rel="stylesheet" type="text/css" href="styles/bootstrap.css" />
+    <Link rel="stylesheet" type="text/css" href="styles/style.css" />
+    <Link
+      href="https://fonts.googleapis.com/css?family=Roboto:300,300i,400,400i,500,500i,700,700i,900,900i|Source+Sans+Pro:300,300i,400,400i,600,600i,700,700i,900,900i&display=swap"
+      rel="stylesheet"
+    />
+    <Link
+      rel="stylesheet"
+      type="text/css"
+      href="fonts/css/fontawesome-all.min.css"
+    />
+    <!-- <Link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css" /> -->
+
+    <div id="preloader" v-if="loading">
+      <div class="spinner-border color-highlight" role="status"></div>
+    </div>
+
+    <NuxtPage />
+
+    <Script type="text/javascript" src="scripts/bootstrap.min.js"></Script>
+    <Script type="text/javascript" src="scripts/custom.js"></Script>
+  </div>
+</template>
+
+<script setup>
+const loading = useLoadingScreen();
+</script>
+
+<style>
+html,
+body {
+  background: #1b1d21;
+}
+</style>
