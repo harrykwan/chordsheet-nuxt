@@ -162,7 +162,7 @@ async function searchchord() {
     };
   });
   console.log(polygon_result);
-  searchresult.value = [...polygon_result, ...searchresult.value];
+  searchresult.value = [...searchresult.value, ...polygon_result];
   smallloading.value = false;
 }
 
