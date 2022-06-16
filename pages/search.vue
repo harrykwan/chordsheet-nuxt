@@ -142,7 +142,8 @@ async function searchchord() {
   guitarian_result = guitarian_result.map((x) => {
     return {
       ...x,
-      image: "images/guitarian.png",
+      image:
+        "https://imagedelivery.net/F-3JVW4H1_xFj9Tfzrx6uA/51f900b8-090c-42f3-5255-76d1f3b3b900/public",
     };
   });
   searchresult.value = guitarian_result;
@@ -156,7 +157,8 @@ async function searchchord() {
   polygon_result = polygon_result.map((x) => {
     return {
       ...x,
-      image: "images/polygon.jpg",
+      image:
+        "https://imagedelivery.net/F-3JVW4H1_xFj9Tfzrx6uA/3edfd08f-3eb7-491d-31ec-d581d16d8800/public",
     };
   });
   console.log(polygon_result);
