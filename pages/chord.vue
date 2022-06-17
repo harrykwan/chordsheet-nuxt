@@ -22,7 +22,12 @@
                 : chordsheet.chordsheet"
               :key="ind"
             >
-              <div class="color-white">
+              <div
+                :class="{
+                  'color-white': theme == 'dark',
+                  'color-black': theme == 'light',
+                }"
+              >
                 <pre class="chord">{{ item.chord }}</pre>
               </div>
               <div>
@@ -39,6 +44,7 @@
 <script setup>
 const loading = useLoadingScreen();
 const chordsheet = useChordSheet();
+const theme = useTheme();
 console.log(chordsheet.value);
 loading.value = false;
 
