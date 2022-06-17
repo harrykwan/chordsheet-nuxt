@@ -38,7 +38,6 @@
             </div>
           </div>
         </div>
-        <div class="divider divider-margins mb-n2"></div>
       </div>
       <div class="divider divider-margins mb-n2"></div>
       <div class="content mb-0">
@@ -91,7 +90,7 @@
             <i
               class="fa font-12 fa-moon rounded-s bg-highlight color-white me-3"
             ></i>
-            <span>Lyrics</span>
+            <span>歌詞</span>
             <div
               class="custom-control scale-switch ios-switch"
               @click="togglelyric"
@@ -107,6 +106,35 @@
             <i class="fa fa-angle-right"></i>
           </a>
         </div>
+        <div class="list-group list-custom-small">
+          <a
+            href="#"
+            data-toggle-theme
+            data-trigger-switch="switch-dark-mode"
+            class="pb-2 ms-n1"
+          >
+            <i
+              class="fa font-12 fa-moon rounded-s bg-highlight color-white me-3"
+            ></i>
+            <span>Dark Mode</span>
+            <div
+              class="custom-control scale-switch ios-switch"
+              @click="toggletheme"
+            >
+              <input
+                type="checkbox"
+                class="ios-input"
+                id="switch-dark-mode"
+                :checked="theme == 'dark'"
+              />
+              <label
+                class="custom-control-label"
+                for="switch-dark-mode"
+              ></label>
+            </div>
+            <i class="fa fa-angle-right"></i>
+          </a>
+        </div>
       </div>
     </div>
   </div>
@@ -118,6 +146,12 @@ const chordsheet = useChordSheet();
 const lyricshow = useLyricShow();
 const chordshow = useChordShow();
 const fontsize = useFontSize();
+const theme = useTheme();
+
+function toggletheme() {
+  if (theme.value == "dark") theme.value = "light";
+  else theme.value = "dark";
+}
 
 async function transposedown() {
   if (chordsheet.value.transpose < -10) return;
