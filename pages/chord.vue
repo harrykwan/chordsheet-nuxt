@@ -27,11 +27,16 @@
                   'color-white': theme == 'dark',
                   'color-black': theme == 'light',
                 }"
+                v-if="chordshow"
               >
-                <pre class="chord">{{ item.chord }}</pre>
+                <pre :style="'font-size: ' + fontsize + 'px;'" class="chord">{{
+                  item.chord
+                }}</pre>
               </div>
-              <div>
-                <pre class="lyric">{{ item.lyric }}</pre>
+              <div v-if="lyricshow">
+                <pre :style="'font-size: ' + fontsize + 'px;'" class="lyric">{{
+                  item.lyric
+                }}</pre>
               </div>
             </div>
           </div>
@@ -44,6 +49,9 @@
 <script setup>
 const loading = useLoadingScreen();
 const chordsheet = useChordSheet();
+const lyricshow = useLyricShow();
+const chordshow = useChordShow();
+const fontsize = useFontSize();
 const theme = useTheme();
 console.log(chordsheet.value);
 loading.value = false;
@@ -70,7 +78,6 @@ onMounted(() => {
 .chord,
 .lyric {
   font-family: "Segoe UI", Arial, sans-serif;
-  font-size: 13px;
 }
 pre {
   white-space: pre-wrap; /* Since CSS 2.1 */
