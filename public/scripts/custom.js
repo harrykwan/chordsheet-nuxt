@@ -666,30 +666,30 @@ function init_template() {
   );
 
   //Set Color Based on Remembered Preference.
-  if (localStorage.getItem(pwaName + "-Theme") == "dark-mode") {
-    for (let i = 0; i < toggleDark.length; i++) {
-      toggleDark[i].checked = "checked";
-    }
-    document.body.className = "theme-dark";
-  }
-  if (localStorage.getItem(pwaName + "-Theme") == "light-mode") {
-    document.body.className = "theme-light";
-  }
-  if (document.body.className == "detect-theme") {
-    setColorScheme();
-  }
+  // if (localStorage.getItem(pwaName + "-Theme") == "dark-mode") {
+  //   for (let i = 0; i < toggleDark.length; i++) {
+  //     toggleDark[i].checked = "checked";
+  //   }
+  //   document.body.className = "theme-dark";
+  // }
+  // if (localStorage.getItem(pwaName + "-Theme") == "light-mode") {
+  //   document.body.className = "theme-light";
+  // }
+  // if (document.body.className == "detect-theme") {
+  //   setColorScheme();
+  // }
 
   //Detect Dark/Light Mode
-  const darkModeDetect = document.querySelectorAll(".detect-dark-mode");
-  darkModeDetect.forEach((el) =>
-    el.addEventListener("click", (e) => {
-      document.body.classList.remove("theme-light", "theme-dark");
-      document.body.classList.add("detect-theme");
-      setTimeout(function () {
-        setColorScheme();
-      }, 50);
-    })
-  );
+  // const darkModeDetect = document.querySelectorAll(".detect-dark-mode");
+  // darkModeDetect.forEach((el) =>
+  //   el.addEventListener("click", (e) => {
+  //     document.body.classList.remove("theme-light", "theme-dark");
+  //     document.body.classList.add("detect-theme");
+  //     setTimeout(function () {
+  //       setColorScheme();
+  //     }, 50);
+  //   })
+  // );
 
   //Accordion Rotate
   const accordionBtn = document.querySelectorAll(".accordion-btn");
@@ -1766,32 +1766,32 @@ function init_template() {
   const iOSDev = document.getElementsByClassName("show-ios");
   const noDev = document.getElementsByClassName("show-no-device");
 
-  if (!isMobile.any()) {
-    for (let i = 0; i < iOSDev.length; i++) {
-      iOSDev[i].classList.add("disabled");
-    }
-    for (let i = 0; i < androidDev.length; i++) {
-      androidDev[i].classList.add("disabled");
-    }
-  }
-  if (isMobile.iOS()) {
-    document.querySelectorAll("#page")[0].classList.add("device-is-ios");
-    for (let i = 0; i < noDev.length; i++) {
-      noDev[i].classList.add("disabled");
-    }
-    for (let i = 0; i < androidDev.length; i++) {
-      androidDev[i].classList.add("disabled");
-    }
-  }
-  if (isMobile.Android()) {
-    document.querySelectorAll("#page")[0].classList.add("device-is-android");
-    for (let i = 0; i < iOSDev.length; i++) {
-      iOSDev[i].classList.add("disabled");
-    }
-    for (let i = 0; i < noDev.length; i++) {
-      noDev[i].classList.add("disabled");
-    }
-  }
+  // if (!isMobile.any()) {
+  //   for (let i = 0; i < iOSDev.length; i++) {
+  //     iOSDev[i].classList.add("disabled");
+  //   }
+  //   for (let i = 0; i < androidDev.length; i++) {
+  //     androidDev[i].classList.add("disabled");
+  //   }
+  // }
+  // if (isMobile.iOS()) {
+  //   document.querySelectorAll("#page")[0].classList.add("device-is-ios");
+  //   for (let i = 0; i < noDev.length; i++) {
+  //     noDev[i].classList.add("disabled");
+  //   }
+  //   for (let i = 0; i < androidDev.length; i++) {
+  //     androidDev[i].classList.add("disabled");
+  //   }
+  // }
+  // if (isMobile.Android()) {
+  //   document.querySelectorAll("#page")[0].classList.add("device-is-android");
+  //   for (let i = 0; i < iOSDev.length; i++) {
+  //     iOSDev[i].classList.add("disabled");
+  //   }
+  //   for (let i = 0; i < noDev.length; i++) {
+  //     noDev[i].classList.add("disabled");
+  //   }
+  // }
 
   //OTP Boxes
   var otp = document.querySelectorAll(".otp");
@@ -1807,137 +1807,137 @@ function init_template() {
   }
 
   //PWA Settings
-  if (isPWA === true) {
-    var checkPWA = document.getElementsByTagName("html")[0];
-    if (!checkPWA.classList.contains("isPWA")) {
-      if ("serviceWorker" in navigator) {
-        window.addEventListener("load", function () {
-          navigator.serviceWorker
-            .register(pwaLocation, { scope: pwaScope })
-            .then(function (registration) {
-              registration.update();
-            });
-        });
-      }
+  // if (isPWA === true) {
+  //   var checkPWA = document.getElementsByTagName("html")[0];
+  //   if (!checkPWA.classList.contains("isPWA")) {
+  //     if ("serviceWorker" in navigator) {
+  //       window.addEventListener("load", function () {
+  //         navigator.serviceWorker
+  //           .register(pwaLocation, { scope: pwaScope })
+  //           .then(function (registration) {
+  //             registration.update();
+  //           });
+  //       });
+  //     }
 
-      //Setting Timeout Before Prompt Shows Again if Dismissed
-      var hours = pwaRemind * 24; // Reset when storage is more than 24hours
-      var now = Date.now();
-      var setupTime = localStorage.getItem(pwaName + "-PWA-Timeout-Value");
-      if (setupTime == null) {
-        localStorage.setItem(pwaName + "-PWA-Timeout-Value", now);
-      } else if (now - setupTime > hours * 60 * 60 * 1000) {
-        localStorage.removeItem(pwaName + "-PWA-Prompt");
-        localStorage.setItem(pwaName + "-PWA-Timeout-Value", now);
-      }
+  //     //Setting Timeout Before Prompt Shows Again if Dismissed
+  //     var hours = pwaRemind * 24; // Reset when storage is more than 24hours
+  //     var now = Date.now();
+  //     var setupTime = localStorage.getItem(pwaName + "-PWA-Timeout-Value");
+  //     if (setupTime == null) {
+  //       localStorage.setItem(pwaName + "-PWA-Timeout-Value", now);
+  //     } else if (now - setupTime > hours * 60 * 60 * 1000) {
+  //       localStorage.removeItem(pwaName + "-PWA-Prompt");
+  //       localStorage.setItem(pwaName + "-PWA-Timeout-Value", now);
+  //     }
 
-      const pwaClose = document.querySelectorAll(".pwa-dismiss");
-      pwaClose.forEach((el) =>
-        el.addEventListener("click", (e) => {
-          const pwaWindows = document.querySelectorAll(
-            "#menu-install-pwa-android, #menu-install-pwa-ios"
-          );
-          for (let i = 0; i < pwaWindows.length; i++) {
-            pwaWindows[i].classList.remove("menu-active");
-          }
-          localStorage.setItem(pwaName + "-PWA-Timeout-Value", now);
-          localStorage.setItem(pwaName + "-PWA-Prompt", "install-rejected");
-          console.log(
-            "PWA Install Rejected. Will Show Again in " + pwaRemind + " Days"
-          );
-        })
-      );
+  //     const pwaClose = document.querySelectorAll(".pwa-dismiss");
+  //     pwaClose.forEach((el) =>
+  //       el.addEventListener("click", (e) => {
+  //         const pwaWindows = document.querySelectorAll(
+  //           "#menu-install-pwa-android, #menu-install-pwa-ios"
+  //         );
+  //         for (let i = 0; i < pwaWindows.length; i++) {
+  //           pwaWindows[i].classList.remove("menu-active");
+  //         }
+  //         localStorage.setItem(pwaName + "-PWA-Timeout-Value", now);
+  //         localStorage.setItem(pwaName + "-PWA-Prompt", "install-rejected");
+  //         console.log(
+  //           "PWA Install Rejected. Will Show Again in " + pwaRemind + " Days"
+  //         );
+  //       })
+  //     );
 
-      //Trigger Install Prompt for Android
-      const pwaWindows = document.querySelectorAll(
-        "#menu-install-pwa-android, #menu-install-pwa-ios"
-      );
-      if (pwaWindows.length) {
-        if (isMobile.Android()) {
-          if (
-            localStorage.getItem(pwaName + "-PWA-Prompt") != "install-rejected"
-          ) {
-            function showInstallPrompt() {
-              setTimeout(function () {
-                if (!window.matchMedia("(display-mode: fullscreen)").matches) {
-                  console.log("Triggering PWA Window for Android");
-                  document
-                    .getElementById("menu-install-pwa-android")
-                    .classList.add("menu-active");
-                  document
-                    .querySelectorAll(".menu-hider")[0]
-                    .classList.add("menu-active");
-                }
-              }, 3500);
-            }
-            var deferredPrompt;
-            window.addEventListener("beforeinstallprompt", (e) => {
-              e.preventDefault();
-              deferredPrompt = e;
-              showInstallPrompt();
-            });
-          }
-          const pwaInstall = document.querySelectorAll(".pwa-install");
-          pwaInstall.forEach((el) =>
-            el.addEventListener("click", (e) => {
-              deferredPrompt.prompt();
-              deferredPrompt.userChoice.then((choiceResult) => {
-                if (choiceResult.outcome === "accepted") {
-                  console.log("Added");
-                } else {
-                  localStorage.setItem(pwaName + "-PWA-Timeout-Value", now);
-                  localStorage.setItem(
-                    pwaName + "-PWA-Prompt",
-                    "install-rejected"
-                  );
-                  setTimeout(function () {
-                    if (
-                      !window.matchMedia("(display-mode: fullscreen)").matches
-                    ) {
-                      document
-                        .getElementById("menu-install-pwa-android")
-                        .classList.remove("menu-active");
-                      document
-                        .querySelectorAll(".menu-hider")[0]
-                        .classList.remove("menu-active");
-                    }
-                  }, 50);
-                }
-                deferredPrompt = null;
-              });
-            })
-          );
-          window.addEventListener("appinstalled", (evt) => {
-            document
-              .getElementById("menu-install-pwa-android")
-              .classList.remove("menu-active");
-            document
-              .querySelectorAll(".menu-hider")[0]
-              .classList.remove("menu-active");
-          });
-        }
-        //Trigger Install Guide iOS
-        if (isMobile.iOS()) {
-          if (
-            localStorage.getItem(pwaName + "-PWA-Prompt") != "install-rejected"
-          ) {
-            setTimeout(function () {
-              if (!window.matchMedia("(display-mode: fullscreen)").matches) {
-                console.log("Triggering PWA Window for iOS");
-                document
-                  .getElementById("menu-install-pwa-ios")
-                  .classList.add("menu-active");
-                document
-                  .querySelectorAll(".menu-hider")[0]
-                  .classList.add("menu-active");
-              }
-            }, 3500);
-          }
-        }
-      }
-    }
-    checkPWA.setAttribute("class", "isPWA");
-  }
+  //     //Trigger Install Prompt for Android
+  //     const pwaWindows = document.querySelectorAll(
+  //       "#menu-install-pwa-android, #menu-install-pwa-ios"
+  //     );
+  //     if (pwaWindows.length) {
+  //       if (isMobile.Android()) {
+  //         if (
+  //           localStorage.getItem(pwaName + "-PWA-Prompt") != "install-rejected"
+  //         ) {
+  //           function showInstallPrompt() {
+  //             setTimeout(function () {
+  //               if (!window.matchMedia("(display-mode: fullscreen)").matches) {
+  //                 console.log("Triggering PWA Window for Android");
+  //                 document
+  //                   .getElementById("menu-install-pwa-android")
+  //                   .classList.add("menu-active");
+  //                 document
+  //                   .querySelectorAll(".menu-hider")[0]
+  //                   .classList.add("menu-active");
+  //               }
+  //             }, 3500);
+  //           }
+  //           var deferredPrompt;
+  //           window.addEventListener("beforeinstallprompt", (e) => {
+  //             e.preventDefault();
+  //             deferredPrompt = e;
+  //             showInstallPrompt();
+  //           });
+  //         }
+  //         const pwaInstall = document.querySelectorAll(".pwa-install");
+  //         pwaInstall.forEach((el) =>
+  //           el.addEventListener("click", (e) => {
+  //             deferredPrompt.prompt();
+  //             deferredPrompt.userChoice.then((choiceResult) => {
+  //               if (choiceResult.outcome === "accepted") {
+  //                 console.log("Added");
+  //               } else {
+  //                 localStorage.setItem(pwaName + "-PWA-Timeout-Value", now);
+  //                 localStorage.setItem(
+  //                   pwaName + "-PWA-Prompt",
+  //                   "install-rejected"
+  //                 );
+  //                 setTimeout(function () {
+  //                   if (
+  //                     !window.matchMedia("(display-mode: fullscreen)").matches
+  //                   ) {
+  //                     document
+  //                       .getElementById("menu-install-pwa-android")
+  //                       .classList.remove("menu-active");
+  //                     document
+  //                       .querySelectorAll(".menu-hider")[0]
+  //                       .classList.remove("menu-active");
+  //                   }
+  //                 }, 50);
+  //               }
+  //               deferredPrompt = null;
+  //             });
+  //           })
+  //         );
+  //         window.addEventListener("appinstalled", (evt) => {
+  //           document
+  //             .getElementById("menu-install-pwa-android")
+  //             .classList.remove("menu-active");
+  //           document
+  //             .querySelectorAll(".menu-hider")[0]
+  //             .classList.remove("menu-active");
+  //         });
+  //       }
+  //       //Trigger Install Guide iOS
+  //       if (isMobile.iOS()) {
+  //         if (
+  //           localStorage.getItem(pwaName + "-PWA-Prompt") != "install-rejected"
+  //         ) {
+  //           setTimeout(function () {
+  //             if (!window.matchMedia("(display-mode: fullscreen)").matches) {
+  //               console.log("Triggering PWA Window for iOS");
+  //               document
+  //                 .getElementById("menu-install-pwa-ios")
+  //                 .classList.add("menu-active");
+  //               document
+  //                 .querySelectorAll(".menu-hider")[0]
+  //                 .classList.add("menu-active");
+  //             }
+  //           }, 3500);
+  //         }
+  //       }
+  //     }
+  //   }
+  //   checkPWA.setAttribute("class", "isPWA");
+  // }
 
   //End of isPWA
   if (pwaNoCache === true) {

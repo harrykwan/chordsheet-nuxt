@@ -2,7 +2,7 @@
   <div>
     <FooterNav />
 
-    <div id="page">
+    <div id="page" style="height: 100vh">
       <div class="page-content header-clear-small">
         <div class="search-page">
           <div class="search-box search-header bg-theme card-style me-3 ms-3">
@@ -23,7 +23,7 @@
             class="search-results card card-style shadow-l"
             v-if="searchresult || smallloading"
           >
-            <div v-if="smallloading">
+            <div v-if="smallloading" class="mt-3">
               <div class="content">
                 <div class="d-flex justify-content-center">
                   <div

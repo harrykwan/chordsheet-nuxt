@@ -1,9 +1,14 @@
 <template>
   <div
-    class="theme-dark"
-    data-highlight="highlight-dark"
+    :class="{ 'theme-light': theme == 'light', 'theme-dark': theme == 'dark' }"
     data-gradient="body-default"
   >
+    <div
+      :class="{
+        'fixedbg-light': theme == 'light',
+        'fixedbg-dark': theme == 'dark',
+      }"
+    ></div>
     <Meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
     <Meta name="apple-mobile-web-app-capable" content="yes" />
     <Meta
@@ -41,11 +46,26 @@
 
 <script setup>
 const loading = useLoadingScreen();
+const theme = useTheme();
+theme.value = "dark";
 </script>
 
 <style>
-html,
-body {
+.fixedbg-dark {
   background: #1b1d21;
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+}
+
+.fixedbg-light {
+  background: #f0f0f0;
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
 }
 </style>

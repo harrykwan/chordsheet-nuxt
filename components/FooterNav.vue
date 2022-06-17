@@ -20,26 +20,51 @@
         <a href="#" class="close-menu"><i class="fa fa-times"></i></a>
       </div>
       <div class="divider divider-margins mb-n2"></div>
-      <div class="content mb-0">
-        <div class="d-flex mb-4">
-          <div class="d-flex">
+      <div class="content">
+        <div class="list-group list-custom-small">
+          <a
+            href="#"
+            data-toggle-theme
+            data-trigger-switch="switch-dark-mode"
+            class="pb-2 ms-n1"
+          >
             <i
-              class="fa font-12 fa-music rounded-s bg-highlight color-white me-3 customi"
+              class="fa font-12 fa-moon rounded-s bg-highlight color-white me-3"
             ></i>
-            <span>轉</span>
-            <span>調</span>
-          </div>
-          <div class="ms-3 w-100">
-            <div class="stepper rounded-s scale-switch ms-n1 float-end">
-              <a href="#" class="stepper-sub"
-                ><i class="fa fa-minus color-theme opacity-40"></i
-              ></a>
-              <input type="number" min="-11" max="11" value="0" />
-              <a href="#" class="stepper-add"
-                ><i class="fa fa-plus color-theme opacity-40"></i
-              ></a>
+            <span>Dark Mode</span>
+            <div
+              class="custom-control scale-switch ios-switch"
+              @click="toggletheme"
+            >
+              <input
+                type="checkbox"
+                class="ios-input"
+                id="switch-dark-mode"
+                :checked="theme == 'dark'"
+              />
+              <label
+                class="custom-control-label"
+                for="switch-dark-mode"
+              ></label>
             </div>
-          </div>
+            <i class="fa fa-angle-right"></i>
+          </a>
+        </div>
+        <div class="list-group list-custom-large">
+          <a data-menu="menu-highlights" href="#">
+            <i class="fa font-14 fa-tint bg-green-dark rounded-s"></i>
+            <span>Page Highlight</span>
+            <strong>16 Colors Highlights Included</strong>
+            <span class="badge bg-highlight color-white">HOT</span>
+            <i class="fa fa-angle-right"></i>
+          </a>
+          <a data-menu="menu-backgrounds" href="#" class="border-0">
+            <i class="fa font-14 fa-cog bg-blue-dark rounded-s"></i>
+            <span>Background Color</span>
+            <strong>10 Page Gradients Included</strong>
+            <span class="badge bg-highlight color-white">NEW</span>
+            <i class="fa fa-angle-right"></i>
+          </a>
         </div>
       </div>
     </div>
@@ -48,6 +73,12 @@
 
 <script setup>
 const pagesetting = usePageSetting();
+const theme = useTheme();
+
+function toggletheme() {
+  if (theme.value == "dark") theme.value = "light";
+  else theme.value = "dark";
+}
 </script>
 
 <style scoped>

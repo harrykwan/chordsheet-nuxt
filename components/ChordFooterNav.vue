@@ -46,9 +46,6 @@
 <script setup>
 import axios from "axios";
 const chordsheet = useChordSheet();
-// import { chordParserFactory, chordRendererFactory } from "chord-symbol";
-// import * as ChordParser from "chord-parser";
-// const parseChord = chordParserFactory();
 
 async function transposedown() {
   if (chordsheet.value.transpose < -10) return;
@@ -81,7 +78,6 @@ async function transposechordsheet() {
   width: 30px;
   height: 30px;
   line-height: 30px;
-  /* margin-top: 10px; */
   text-align: center;
   float: left;
 }
