@@ -12,3 +12,9 @@
 <script setup>
 const chordsheet = useChordSheet();
 </script>
+
+<style scoped>
+.header-title {
+  overflow: hidden;
+}
+</style>

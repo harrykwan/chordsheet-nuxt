@@ -31,7 +31,6 @@
       type="text/css"
       href="fonts/css/fontawesome-all.min.css"
     />
-    <!-- <Link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css" /> -->
 
     <div id="preloader" v-if="loading">
       <div class="spinner-border color-highlight" role="status"></div>

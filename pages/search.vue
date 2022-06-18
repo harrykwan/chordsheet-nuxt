@@ -45,7 +45,7 @@
                   :key="ind"
                 >
                   <img class="shadow-l preload-img" :src="item.image" />
-                  <h1 class="mt-3">{{ item.song_name }}</h1>
+                  <h1 class="mt-3 songtitle">{{ item.song_name }}</h1>
                   <p>{{ item.artist_name }}</p>
                   <a href="#" @click="choosechord(item)" class="bg-highlight"
                     >VIEW</a
@@ -134,6 +134,10 @@ loading.value = true;
 async function searchchord() {
   smallloading.value = true;
   searchresult.value = [];
+
+  const google_result = await googleit(searchinput.value);
+  searchresult.value = google_result;
+
   let guitarian_result = await useFetch(
     "https://7aof7x0rkc.execute-api.us-east-1.amazonaws.com/search/guitarian/" +
       encodeURIComponent(searchinput.value)
@@ -146,7 +150,7 @@ async function searchchord() {
         "https://imagedelivery.net/F-3JVW4H1_xFj9Tfzrx6uA/51f900b8-090c-42f3-5255-76d1f3b3b900/public",
     };
   });
-  searchresult.value = guitarian_result;
+  searchresult.value = [...searchresult.value, ...guitarian_result];
 
   let polygon_result = await useFetch(
     "https://7aof7x0rkc.execute-api.us-east-1.amazonaws.com/search/polygon/" +
@@ -161,9 +165,51 @@ async function searchchord() {
         "https://imagedelivery.net/F-3JVW4H1_xFj9Tfzrx6uA/3edfd08f-3eb7-491d-31ec-d581d16d8800/public",
     };
   });
-  console.log(polygon_result);
+
   searchresult.value = [...searchresult.value, ...polygon_result];
+
+  let nineone_result = await useFetch(
+    "https://7aof7x0rkc.execute-api.us-east-1.amazonaws.com/search/nineone/" +
+      encodeURIComponent(searchinput.value)
+  );
+
+  nineone_result = nineone_result.data.value.body;
+  nineone_result = nineone_result.map((x) => {
+    return {
+      ...x,
+      image:
+        "https://imagedelivery.net/F-3JVW4H1_xFj9Tfzrx6uA/044eefcd-c4b4-4aee-bcc4-111ca35cb900/public",
+    };
+  });
+
+  searchresult.value = [...searchresult.value, ...nineone_result];
+
   smallloading.value = false;
+}
+
+async function googleit(keyword) {
+  let result = await useFetch(
+    "https://7aof7x0rkc.execute-api.us-east-1.amazonaws.com/search/googleit/" +
+      encodeURIComponent(keyword)
+  );
+
+  result = result.data.value.body;
+  let resultlist = [];
+  result.map((x) => {
+    if (
+      x.link.indexOf("guitarians.com/chord/") != -1 ||
+      x.link.indexOf("polygon.guitars/score/") != -1 ||
+      x.link.indexOf("91pu.com.tw/song/") != -1
+    )
+      resultlist.push({
+        song_name: x.title,
+        artist_name: x.link.split("//")[1].split("/")[0],
+        url: x.link,
+        image:
+          "https://imagedelivery.net/F-3JVW4H1_xFj9Tfzrx6uA/2034dd3f-a9ab-4753-fdf9-a1bb4fe1a100/public",
+      });
+  });
+  return resultlist;
 }
 
 async function choosechord(item) {
@@ -195,3 +241,8 @@ onMounted(() => {
   }
 });
 </script>
+<style scoped>
+.songtitle {
+  width: calc(100% - 80px);
+}
+</style>

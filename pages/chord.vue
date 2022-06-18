@@ -4,17 +4,8 @@
     <ChordHeaderNav />
     <div id="page" v-if="chordsheet">
       <div class="page-content header-clear-medium">
-        <!--
-			How to find your preferred action sheet fast and easy in this large page:
-
-			For example, if you want to use the data-menu="menu-call" actionsheet please use CTRL+F or CMD+F
-			and search for id="menu-call". This is the easiest way to locate your preferred action sheet.
-		-->
-
         <div class="card card-style">
           <div class="content">
-            <!-- <h1 class="font-21">song name</h1> -->
-            <!-- <p class="color-highlight font-12 mt-n3 pt-1 mb-2">artist name</p> -->
             <div
               class="mb-3"
               v-for="(item, ind) in chordsheet.transposedchordsheet

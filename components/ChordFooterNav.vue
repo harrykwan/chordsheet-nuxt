@@ -7,7 +7,7 @@
     <div id="menu-settings" class="menu menu-box-bottom">
       <div class="menu-title mt-0 pt-0">
         <h1>Settings</h1>
-        <!-- <p class="color-highlight">Flexible and Easy to Use</p> -->
+
         <a href="#" class="close-menu"><i class="fa fa-times"></i></a>
       </div>
       <div class="divider divider-margins mb-n2"></div>
@@ -179,6 +179,7 @@ async function transposechordsheet() {
     chordsheet: nowchordsheet.chordsheet,
     transpose: nowchordsheet.transpose,
   };
+  console.log(reqbody);
   const result = await axios.post(
     "https://7aof7x0rkc.execute-api.us-east-1.amazonaws.com/transposechordsheet",
     reqbody
