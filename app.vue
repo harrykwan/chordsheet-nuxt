@@ -19,7 +19,7 @@
       name="viewport"
       content="width=device-width, initial-scale=1, minimum-scale=1, maximum-scale=1, viewport-fit=cover"
     />
-    <Title>StickyMobile BootStrap</Title>
+    <Title>揾Chord</Title>
     <Link rel="stylesheet" type="text/css" href="styles/bootstrap.css" />
     <Link rel="stylesheet" type="text/css" href="styles/style.css" />
     <Link
@@ -61,7 +61,6 @@ onMounted(() => {
 
 watch(theme, () => {
   if (process.client) {
-    console.log(theme.value);
     localStorage.setItem("theme", theme.value);
   }
 });

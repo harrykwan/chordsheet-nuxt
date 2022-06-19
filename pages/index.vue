@@ -16,6 +16,7 @@ onMounted(() => {
       }, 100);
     } catch (e) {
       console.log(e);
+      loading.value = false;
     }
   }
 });

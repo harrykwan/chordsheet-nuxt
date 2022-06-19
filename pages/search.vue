@@ -23,7 +23,7 @@
             class="search-results card card-style shadow-l"
             v-if="searchresult || smallloading"
           >
-            <div v-if="smallloading" class="mt-3">
+            <div v-if="smallloading" class="mt-2 mb-2">
               <div class="content">
                 <div class="d-flex justify-content-center">
                   <div
@@ -65,39 +65,6 @@
             </div>
           </div>
 
-          <div class="search-trending card card-style disabled">
-            <div class="content mb-2">
-              <h3>人氣歌曲</h3>
-              <p class="font-11 mt-n2">其他人在彈什麼？</p>
-            </div>
-            <div class="list-group list-custom-small me-3 ms-3">
-              <a href="#">
-                <span class="font-400 color-blue-dark">All Products</span>
-                <i class="color-gray-dark fa fa-angle-right"></i>
-              </a>
-              <a href="#">
-                <span class="font-400 color-blue-dark">Eazy Mobile</span>
-                <i class="color-gray-dark fa fa-angle-right"></i>
-              </a>
-              <a href="#">
-                <span class="font-400 color-blue-dark">Mega Mobile</span>
-                <i class="color-gray-dark fa fa-angle-right"></i>
-              </a>
-              <a href="#">
-                <span class="font-400 color-blue-dark">Ultra Mobile</span>
-                <i class="color-gray-dark fa fa-angle-right"></i>
-              </a>
-              <a href="#">
-                <span class="font-400 color-blue-dark">Kolor Mobile</span>
-                <i class="color-gray-dark fa fa-angle-right"></i>
-              </a>
-              <a href="#" class="border-0">
-                <span class="font-400 color-blue-dark">Vinga Mobile</span>
-                <i class="color-gray-dark fa fa-angle-right"></i>
-              </a>
-            </div>
-          </div>
-
           <div
             class="card card-style preload-img"
             data-src="images/pictures/18.jpg"
@@ -109,13 +76,38 @@
             </div>
             <div class="card-center me-3">
               <a
-                href="#"
-                data-back-button
+                @click="gettopsongs"
                 class="btn btn-m float-end rounded-xl shadow-xl text-uppercase font-800 bg-highlight"
                 >GO</a
               >
             </div>
             <div class="card-overlay bg-black opacity-80"></div>
+          </div>
+
+          <div
+            class="search-trending card card-style"
+            v-if="showtopsongs.length > 0"
+          >
+            <div class="content mb-2">
+              <h3>人氣歌曲</h3>
+              <p class="font-11 mt-n2">其他人在聽什麼？</p>
+            </div>
+            <div class="list-group list-custom-small me-3 ms-3">
+              <a
+                @click="choosetopsong(item.song_name)"
+                href="#"
+                v-for="(item, ind) in showtopsongs"
+                :key="ind"
+              >
+                <span class="font-400"
+                  >《 {{ item.song_name }} 》
+                  <span class="font-200" style="margin-left: 10px; opacity: 0.7"
+                    >[{{ item.artist_name }}]</span
+                  ></span
+                >
+                <i class="color-gray-dark fa fa-angle-right"></i>
+              </a>
+            </div>
           </div>
         </div>
       </div>
@@ -125,6 +117,8 @@
 
 <script setup>
 const searchinput = ref("");
+const topsongs = ref([]);
+const showtopsongs = ref([]);
 const searchresult = useSearchResult();
 const chordsheet = useChordSheet();
 const loading = useLoadingScreen();
@@ -186,6 +180,67 @@ async function add_nineone_search() {
   });
 
   searchresult.value = [...searchresult.value, ...nineone_result];
+}
+
+async function add_guitarian_topsongs() {
+  let guitarian_result = await useFetch(
+    "https://7aof7x0rkc.execute-api.us-east-1.amazonaws.com/gettopsongs/guitarian/" +
+      encodeURIComponent(searchinput.value)
+  );
+  guitarian_result = guitarian_result.data.value.body;
+  topsongs.value.push(...guitarian_result);
+}
+
+async function add_nineone_topsongs() {
+  let nineone_result = await useFetch(
+    "https://7aof7x0rkc.execute-api.us-east-1.amazonaws.com/gettopsongs/nineone/" +
+      encodeURIComponent(searchinput.value)
+  );
+  nineone_result = nineone_result.data.value.body;
+  topsongs.value.push(...nineone_result);
+}
+
+async function add_applemusic_topsongs() {
+  let applemusic_result = await useFetch(
+    "https://7aof7x0rkc.execute-api.us-east-1.amazonaws.com/gettopsongs/applemusic/" +
+      encodeURIComponent(searchinput.value)
+  );
+  applemusic_result = applemusic_result.data.value.body;
+  topsongs.value.push(...applemusic_result);
+}
+
+async function add_spotify_topsongs() {
+  let spotify_result = await useFetch(
+    "https://7aof7x0rkc.execute-api.us-east-1.amazonaws.com/gettopsongs/spotify/" +
+      encodeURIComponent(searchinput.value)
+  );
+  spotify_result = spotify_result.data.value.body;
+  topsongs.value.push(...spotify_result);
+}
+
+async function gettopsongs() {
+  smallloading.value = true;
+  showtopsongs.value = [];
+  if (topsongs.value.length == 0) {
+    await Promise.all([
+      add_guitarian_topsongs(),
+      add_nineone_topsongs(),
+      add_applemusic_topsongs(),
+      //   add_spotify_topsongs(),
+    ]);
+  }
+  for (var j = 0; j < 10; j++) {
+    const randomindex = Math.floor(Math.random() * topsongs.value.length);
+    const topsong = topsongs.value.splice(randomindex, 1)[0];
+    showtopsongs.value.push(topsong);
+  }
+
+  smallloading.value = false;
+}
+
+function choosetopsong(song_name) {
+  searchinput.value = song_name;
+  searchchord();
 }
 
 async function searchchord() {
