@@ -131,13 +131,12 @@ const loading = useLoadingScreen();
 const smallloading = ref(false);
 loading.value = true;
 
-async function searchchord() {
-  smallloading.value = true;
-  searchresult.value = [];
-
+async function add_google_search() {
   const google_result = await googleit(searchinput.value);
-  searchresult.value = google_result;
+  searchresult.value = [...searchresult.value, ...google_result];
+}
 
+async function add_guitarian_search() {
   let guitarian_result = await useFetch(
     "https://7aof7x0rkc.execute-api.us-east-1.amazonaws.com/search/guitarian/" +
       encodeURIComponent(searchinput.value)
@@ -151,7 +150,9 @@ async function searchchord() {
     };
   });
   searchresult.value = [...searchresult.value, ...guitarian_result];
+}
 
+async function add_polygon_search() {
   let polygon_result = await useFetch(
     "https://7aof7x0rkc.execute-api.us-east-1.amazonaws.com/search/polygon/" +
       encodeURIComponent(searchinput.value)
@@ -167,7 +168,9 @@ async function searchchord() {
   });
 
   searchresult.value = [...searchresult.value, ...polygon_result];
+}
 
+async function add_nineone_search() {
   let nineone_result = await useFetch(
     "https://7aof7x0rkc.execute-api.us-east-1.amazonaws.com/search/nineone/" +
       encodeURIComponent(searchinput.value)
@@ -183,7 +186,17 @@ async function searchchord() {
   });
 
   searchresult.value = [...searchresult.value, ...nineone_result];
+}
 
+async function searchchord() {
+  smallloading.value = true;
+  searchresult.value = [];
+  await Promise.all([
+    add_google_search(),
+    add_guitarian_search(),
+    add_polygon_search(),
+    add_nineone_search(),
+  ]);
   smallloading.value = false;
 }
 

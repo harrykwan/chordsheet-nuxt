@@ -1,12 +1,16 @@
 <template>
   <div>
     <div id="footer-bar" class="footer-bar-1">
-      <NuxtLink to="/" class="active-nav"
+      <NuxtLink to="/" :class="{ 'active-nav': pagenum == 1 }"
         ><i class="fa fa-home"></i><span>介紹</span></NuxtLink
       >
-      <NuxtLink><i class="fa fa-star"></i><span>潮流</span></NuxtLink>
-      <NuxtLink><i class="fa fa-heart"></i><span>已存</span></NuxtLink>
-      <NuxtLink to="/search"
+      <NuxtLink :class="{ 'active-nav': pagenum == 2 }"
+        ><i class="fa fa-star"></i><span>潮流</span></NuxtLink
+      >
+      <NuxtLink :class="{ 'active-nav': pagenum == 3 }"
+        ><i class="fa fa-heart"></i><span>已存</span></NuxtLink
+      >
+      <NuxtLink :class="{ 'active-nav': pagenum == 4 }" to="/search"
         ><i class="fa fa-search"></i><span>揾譜</span></NuxtLink
       >
       <NuxtLink href="#" data-menu="menu-settings"
@@ -74,6 +78,22 @@
 <script setup>
 const pagesetting = usePageSetting();
 const theme = useTheme();
+const pagenum = ref(1);
+const route = useRoute();
+
+coloricon();
+
+watch(route, () => {
+  coloricon();
+});
+
+function coloricon() {
+  if (route.path == "/") {
+    pagenum.value = 1;
+  } else if (route.path.indexOf("search") != -1) {
+    pagenum.value = 4;
+  }
+}
 
 function toggletheme() {
   if (theme.value == "dark") theme.value = "light";

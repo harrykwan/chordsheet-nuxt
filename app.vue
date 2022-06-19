@@ -35,9 +35,9 @@
     <div id="preloader" v-if="loading">
       <div class="spinner-border color-highlight" role="status"></div>
     </div>
-
-    <NuxtPage />
-
+    <client-only>
+      <NuxtPage />
+    </client-only>
     <Script type="text/javascript" src="scripts/bootstrap.min.js"></Script>
     <Script type="text/javascript" src="scripts/custom.js"></Script>
   </div>
@@ -46,7 +46,25 @@
 <script setup>
 const loading = useLoadingScreen();
 const theme = useTheme();
-theme.value = "dark";
+
+function getlocalstorage() {
+  let locatheme;
+  if (process.client) {
+    locatheme = localStorage.getItem("theme");
+  }
+  if (locatheme) theme.value = locatheme;
+}
+
+onMounted(() => {
+  getlocalstorage();
+});
+
+watch(theme, () => {
+  if (process.client) {
+    console.log(theme.value);
+    localStorage.setItem("theme", theme.value);
+  }
+});
 </script>
 
 <style>
