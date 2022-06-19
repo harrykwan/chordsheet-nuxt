@@ -1381,6 +1381,7 @@ img.mx-auto {
   bottom: 0px;
   z-index: 99999;
   transition: all 200ms ease;
+  opacity: .8;
 }
 #preloader .spinner-border {
   position: absolute;
