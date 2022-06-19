@@ -19,23 +19,10 @@
             >
             <h1 class="mt-n2 font-28">揾Chord</h1>
           </div>
-          <div class="align-self-center ms-auto mt-1">
-            <a href="#" class="d-block"
-              ><img
-                src="images/fitness/2t.jpg"
-                class="img-fluid shadow-xl rounded-circle"
-                width="52"
-                alt="img"
-            /></a>
-          </div>
         </div>
       </div>
 
-      <div
-        class="card card-style"
-        data-card-height="170"
-        style="background-image: url(images/fitness/14m.jpg)"
-      >
+      <div class="card card-style" data-card-height="170">
         <div class="card-top p-2">
           <!-- <a
             href="#"
