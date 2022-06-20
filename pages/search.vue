@@ -267,7 +267,8 @@ async function googleit(keyword) {
     if (
       x.link.indexOf("guitarians.com/chord/") != -1 ||
       x.link.indexOf("polygon.guitars/score/") != -1 ||
-      x.link.indexOf("91pu.com.tw/song/") != -1
+      x.link.indexOf("91pu.com.tw/song/") != -1 ||
+      x.link.indexOf("tabs.ultimate-guitar.com/tab") != -1
     )
       resultlist.push({
         song_name: x.title,
