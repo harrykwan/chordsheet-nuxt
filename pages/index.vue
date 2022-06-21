@@ -265,6 +265,7 @@ function initpage() {
         loading.value = false;
       } catch (e) {
         console.log(e);
+        alert(e);
         loading.value = false;
       }
     }, 100);
