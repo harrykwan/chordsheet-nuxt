@@ -19,7 +19,7 @@
       name="viewport"
       content="width=device-width, initial-scale=1, minimum-scale=1, maximum-scale=1, viewport-fit=cover"
     />
-    <Title>揾Chord</Title>
+    <Title>BUSKKING</Title>
     <Link rel="stylesheet" type="text/css" href="styles/bootstrap.css" />
     <Link rel="stylesheet" type="text/css" href="styles/style.css" />
     <Link

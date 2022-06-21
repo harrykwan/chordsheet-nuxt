@@ -64,29 +64,26 @@
         <div class="content">
           <div
             class="card card-style bg-28"
-            style="background-image: url('images/travel/6m.jpg')"
+            style="background-image: url('images/perform.webp')"
           >
             <div class="card-body my-3">
-              <h1 class="color-white">
-                Location Live
-                <br />Walkthrough
-              </h1>
+              <h1 class="color-white">WHY ME</h1>
               <p class="color-white opacity-60 mb-0">
-                We are here to show off the brand new Apple Watch Release. Join
-                us and watch it live!
+                揾譜？執譜？學音樂？依度可以一次過滿足你。升降Key、學 guitar tab
+                冇廣告、唔使登入!
               </p>
-              <a
-                href="#"
+              <NuxtLink
+                to="/search"
                 class="btn btn-s rounded-sm bg-highlight color-white mt-3 text-uppercase font-800"
-                ><i class="fa fa-play-circle pe-2"></i> WATCH LIVE</a
+                ><i class="fa fa-play-circle pe-2"></i>即刻試下</NuxtLink
               >
             </div>
-            <div class="card-overlay bg-black opacity-70"></div>
+            <div class="card-overlay bg-black opacity-50"></div>
           </div>
 
           <div class="divider divider-margins"></div>
 
-          <div class="d-flex">
+          <!-- <div class="d-flex">
             <div class="me-auto">
               <span
                 class="badge no-click bg-green-dark p-2 text-uppercase rounded-s mb-3"
@@ -103,15 +100,15 @@
                 ><i class="far fa-heart pe-2"></i>25k</span
               >
             </div>
-          </div>
-          <h1 class="font-24 line-height-m pb-1">Maldives Summer Holliday</h1>
+          </div> -->
+          <!-- <h1 class="font-24 line-height-m pb-1">Maldives Summer Holliday</h1>
           <p class="pt-1">
             Lorem ipsum dolor sit amet, consectetur adipiscing elit. Curabitur
             aliquam non nunc quis maximus. Fusce volutpat arcu id ante maximus
             vestibulum. Curabitur non nisi venenatis, pharetra nisl et,
             ullamcorper diam. Morbi interdum varius molestie. Quisque feugiat
             augue id diam ornare auctor.
-          </p>
+          </p> -->
 
           <div
             class="card card-style"
@@ -147,7 +144,7 @@
             </div>
 
             <div class="card-bottom p-3">
-              <h1 class="color-white mb-n1">男歌手</h1>
+              <h1 class="color-white mb-n1">女歌手</h1>
               <p class="color-white mb-0 opacity-60">Click Me</p>
             </div>
             <div class="card-overlay bg-gradient"></div>
@@ -172,39 +169,12 @@
             </div>
             <div class="card-overlay bg-gradient"></div>
           </div>
-
-          <div class="d-flex pb-2">
-            <a
-              href="#"
-              class="mx-auto shareToFacebook icon icon-xs rounded-sm bg-facebook"
-              ><i class="fab fa-facebook-f"></i
-            ></a>
-            <a
-              href="#"
-              class="mx-auto shareToTwitter icon icon-xs rounded-sm bg-twitter"
-              ><i class="fab fa-twitter"></i
-            ></a>
-            <a
-              href="#"
-              class="mx-auto shareToWhatsApp icon icon-xs rounded-sm bg-whatsapp"
-              ><i class="fab fa-whatsapp"></i
-            ></a>
-            <a
-              href="#"
-              class="mx-auto shareToLinkedIn icon icon-xs rounded-sm bg-linkedin"
-              ><i class="fab fa-linkedin-in"></i
-            ></a>
-            <a
-              href="#"
-              class="mx-auto shareToMail icon icon-xs rounded-sm bg-mail"
-              ><i class="fa fa-envelope"></i
-            ></a>
-          </div>
         </div>
 
         <div class="divider divider-margins"></div>
 
         <div
+          hidden
           class="card card-style bg-17"
           data-card-height="400"
           style="background-image: url('images/travel/4m.jpg')"
@@ -218,7 +188,7 @@
 
         <div class="divider divider-margins"></div>
 
-        <div class="content mt-0">
+        <div class="content mt-0" hidden>
           <h4>This is an Image Gallery</h4>
           <p>
             This page is not WordPress, it's an HTML website. Yes, that's right.
@@ -234,7 +204,7 @@
                 title="Image Title or Caption"
               >
                 <img
-                  src="images/empty.png"
+                  :src="'images/empty.png'"
                   data-src="images/travel/1s.jpg"
                   class="preload-img shadow-s img-fluid rounded-s"
                   alt="img"
@@ -249,7 +219,7 @@
                 title="Image Title or Caption"
               >
                 <img
-                  src="images/empty.png"
+                  :src="'images/empty.png'"
                   data-src="images/travel/4s.jpg"
                   class="preload-img shadow-s img-fluid rounded-s"
                   alt="img"
@@ -264,7 +234,7 @@
                 title="Image Title or Caption"
               >
                 <img
-                  src="images/empty.png"
+                  :src="'images/empty.png'"
                   data-src="images/travel/8s.jpg"
                   class="preload-img shadow-s img-fluid rounded-s"
                   alt="img"
@@ -276,53 +246,7 @@
 
         <div class="divider divider-margins"></div>
 
-        <div class="footer">
-          <a href="#" class="footer-title"
-            ><span class="color-highlight">StickyMobile</span></a
-          >
-          <p class="footer-text">
-            <span
-              >Made with
-              <i class="fa fa-heart color-highlight font-16 ps-2 pe-2"></i> by
-              Enabled</span
-            ><br /><br />Powered by the best Mobile Website Developer on Envato
-            Market. Elite Quality. Elite Products.
-          </p>
-          <div class="text-center mb-3">
-            <a
-              href="#"
-              class="icon icon-xs rounded-sm shadow-l me-1 bg-facebook"
-              ><i class="fab fa-facebook-f"></i
-            ></a>
-            <a href="#" class="icon icon-xs rounded-sm shadow-l me-1 bg-twitter"
-              ><i class="fab fa-twitter"></i
-            ></a>
-            <a href="#" class="icon icon-xs rounded-sm shadow-l me-1 bg-phone"
-              ><i class="fa fa-phone"></i
-            ></a>
-            <a
-              href="#"
-              data-menu="menu-share"
-              class="icon icon-xs rounded-sm me-1 shadow-l bg-red-dark"
-              ><i class="fa fa-share-alt"></i
-            ></a>
-            <a
-              href="#"
-              class="back-to-top icon icon-xs rounded-sm shadow-l bg-dark-light"
-              ><i class="fa fa-angle-up"></i
-            ></a>
-          </div>
-          <p class="footer-copyright">
-            Copyright &copy; Enabled <span id="copyright-year">2017</span>. All
-            Rights Reserved.
-          </p>
-          <p class="footer-links">
-            <a href="#" class="color-highlight">Privacy Policy</a> |
-            <a href="#" class="color-highlight">Terms and Conditions</a> |
-            <a href="#" class="back-to-top color-highlight"> Back to Top</a>
-          </p>
-          <div class="clear"></div>
-        </div>
+        <FooterNotes />
       </div>
     </div>
   </div>
