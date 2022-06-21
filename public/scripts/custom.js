@@ -468,10 +468,10 @@ function init_template() {
     }
     return d;
   }
-  let iosVer = iOSversion();
-  if (iosVer.version > 14) {
-    document.querySelectorAll("#page")[0].classList.add("min-ios15");
-  }
+  // let iosVer = iOSversion();
+  // if (iosVer.version > 14) {
+  //   document.querySelectorAll("#page")[0].classList.add("min-ios15");
+  // }
 
   //Card Extender
   const cards = document.getElementsByClassName("card");
