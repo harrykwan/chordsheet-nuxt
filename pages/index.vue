@@ -3,7 +3,7 @@
     <FooterNav />
     <div class="header header-fixed header-logo-center header-auto-show">
       <a href="index.html" class="header-title">
-        <img class="toplogo" src="/images/buskking-yellow.png" />
+        <img class="toplogo" :src="'/images/buskking-yellow.png'" />
         <span>BUSKKING</span></a
       >
 
@@ -31,7 +31,7 @@
             biglogocontainer_white: theme == 'light',
           }"
         >
-          <img class="biglogo" src="/images/buskking-yellow.png" />
+          <img class="biglogo" :src="'/images/buskking-yellow.png'" />
         </div>
 
         <div class="card-bottom disabled mb-5 pb-3 mt-2 text-center">
