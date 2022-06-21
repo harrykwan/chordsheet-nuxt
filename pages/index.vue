@@ -68,7 +68,7 @@
           >
             <div class="card-body my-3">
               <h1 class="color-white">WHY ME</h1>
-              <p class="color-white opacity-60 mb-0">
+              <p class="color-white opacity-60 mb-0" @click="initpage">
                 揾譜？執譜？學音樂？依度可以一次過滿足你。升降Key、學 guitar tab
                 冇廣告、唔使登入!
               </p>
@@ -123,7 +123,7 @@
           > -->
             </div>
 
-            <div class="card-bottom p-3" @click="initpage">
+            <div class="card-bottom p-3">
               <h1 class="color-white mb-n1">男歌手</h1>
               <p class="color-white mb-0 opacity-60">Click Me</p>
             </div>
