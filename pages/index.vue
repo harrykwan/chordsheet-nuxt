@@ -266,7 +266,7 @@ onMounted(() => {
         console.log(e);
         loading.value = false;
       }
-    }, 100);
+    }, 500);
   }
 });
 </script>
