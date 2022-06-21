@@ -1750,17 +1750,17 @@ function init_template() {
   );
 
   //Detecting Mobile OS
-  let isMobile = {
-    Android: function () {
-      return navigator.userAgent.match(/Android/i);
-    },
-    iOS: function () {
-      return navigator.userAgent.match(/iPhone|iPad|iPod/i);
-    },
-    any: function () {
-      return isMobile.Android() || isMobile.iOS();
-    },
-  };
+  // let isMobile = {
+  //   Android: function () {
+  //     return navigator.userAgent.match(/Android/i);
+  //   },
+  //   iOS: function () {
+  //     return navigator.userAgent.match(/iPhone|iPad|iPod/i);
+  //   },
+  //   any: function () {
+  //     return isMobile.Android() || isMobile.iOS();
+  //   },
+  // };
 
   const androidDev = document.getElementsByClassName("show-android");
   const iOSDev = document.getElementsByClassName("show-ios");
