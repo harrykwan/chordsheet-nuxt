@@ -3,7 +3,7 @@
     <FooterNav />
     <div class="header header-fixed header-logo-center header-auto-show">
       <a href="index.html" class="header-title">
-        <img class="toplogo" src="images/buskking-yellow.png" />
+        <img class="toplogo" src="/images/buskking-yellow.png" />
         <span>BUSKKING</span></a
       >
 
@@ -26,14 +26,12 @@
         "
       >
         <div
-          style="
-            width: 100%;
-            height: 100%;
-            position: inherit;
-            background: rgba(0, 0, 0, 0.7);
-          "
+          :class="{
+            biglogocontainer_black: theme == 'dark',
+            biglogocontainer_white: theme == 'light',
+          }"
         >
-          <img class="biglogo" src="images/buskking-yellow.png" />
+          <img class="biglogo" src="/images/buskking-yellow.png" />
         </div>
 
         <div class="card-bottom disabled mb-5 pb-3 mt-2 text-center">
@@ -64,21 +62,29 @@
           style="height: 5px; width: 50px"
         ></div>
         <div class="content">
-          <div class="card card-style" data-card-height="170">
-            <div class="card-top p-2">
-              <!-- <a
-            href="#"
-            class="btn btn-xs bg-white color-black font-700 text-uppercase rounded-s"
-            >Start</a
-          > -->
+          <div
+            class="card card-style bg-28"
+            style="background-image: url('images/travel/6m.jpg')"
+          >
+            <div class="card-body my-3">
+              <h1 class="color-white">
+                Location Live
+                <br />Walkthrough
+              </h1>
+              <p class="color-white opacity-60 mb-0">
+                We are here to show off the brand new Apple Watch Release. Join
+                us and watch it live!
+              </p>
+              <a
+                href="#"
+                class="btn btn-s rounded-sm bg-highlight color-white mt-3 text-uppercase font-800"
+                ><i class="fa fa-play-circle pe-2"></i> WATCH LIVE</a
+              >
             </div>
-
-            <div class="card-bottom p-3">
-              <h1 class="color-white mb-n1">男歌手</h1>
-              <p class="color-white mb-0 opacity-60">Click Me</p>
-            </div>
-            <div class="card-overlay bg-gradient"></div>
+            <div class="card-overlay bg-black opacity-70"></div>
           </div>
+
+          <div class="divider divider-margins"></div>
 
           <div class="d-flex">
             <div class="me-auto">
@@ -106,6 +112,67 @@
             ullamcorper diam. Morbi interdum varius molestie. Quisque feugiat
             augue id diam ornare auctor.
           </p>
+
+          <div
+            class="card card-style"
+            data-card-height="170"
+            style="background-image: url(images/male.jpg)"
+          >
+            <div class="card-top p-2">
+              <!-- <a
+            href="#"
+            class="btn btn-xs bg-white color-black font-700 text-uppercase rounded-s"
+            >Start</a
+          > -->
+            </div>
+
+            <div class="card-bottom p-3">
+              <h1 class="color-white mb-n1">男歌手</h1>
+              <p class="color-white mb-0 opacity-60">Click Me</p>
+            </div>
+            <div class="card-overlay bg-gradient"></div>
+          </div>
+
+          <div
+            class="card card-style"
+            data-card-height="170"
+            style="background-image: url(images/female.jpg)"
+          >
+            <div class="card-top p-2">
+              <!-- <a
+            href="#"
+            class="btn btn-xs bg-white color-black font-700 text-uppercase rounded-s"
+            >Start</a
+          > -->
+            </div>
+
+            <div class="card-bottom p-3">
+              <h1 class="color-white mb-n1">男歌手</h1>
+              <p class="color-white mb-0 opacity-60">Click Me</p>
+            </div>
+            <div class="card-overlay bg-gradient"></div>
+          </div>
+
+          <div
+            class="card card-style"
+            data-card-height="170"
+            style="background-image: url(images/tgt.jpg)"
+          >
+            <div class="card-top p-2">
+              <!-- <a
+            href="#"
+            class="btn btn-xs bg-white color-black font-700 text-uppercase rounded-s"
+            >Start</a
+          > -->
+            </div>
+
+            <div class="card-bottom p-3">
+              <h1 class="color-white mb-n1">組合</h1>
+              <p class="color-white mb-0 opacity-60">Click Me</p>
+            </div>
+            <div class="card-overlay bg-gradient"></div>
+          </div>
+
           <div class="d-flex pb-2">
             <a
               href="#"
@@ -209,30 +276,6 @@
 
         <div class="divider divider-margins"></div>
 
-        <div
-          class="card card-style bg-28"
-          style="background-image: url('images/travel/6m.jpg')"
-        >
-          <div class="card-body my-3">
-            <h1 class="color-white">
-              Location Live
-              <br />Walkthrough
-            </h1>
-            <p class="color-white opacity-60 mb-0">
-              We are here to show off the brand new Apple Watch Release. Join us
-              and watch it live!
-            </p>
-            <a
-              href="#"
-              class="btn btn-s rounded-sm bg-highlight color-white mt-3 text-uppercase font-800"
-              ><i class="fa fa-play-circle pe-2"></i> WATCH LIVE</a
-            >
-          </div>
-          <div class="card-overlay bg-black opacity-70"></div>
-        </div>
-
-        <div class="divider divider-margins"></div>
-
         <div class="footer">
           <a href="#" class="footer-title"
             ><span class="color-highlight">StickyMobile</span></a
@@ -287,6 +330,7 @@
 
 <script setup>
 const loading = useLoadingScreen();
+const theme = useTheme();
 loading.value = true;
 onMounted(() => {
   if (process.client) {
@@ -328,8 +372,41 @@ onMounted(() => {
   right: 0;
   margin-left: auto;
   margin-right: auto;
+  margin-top: 30px;
   border: 0px solid black;
   border-radius: 50%;
   /* background: black; */
+}
+
+.biglogocontainer_black {
+  width: 100%;
+  height: 100%;
+  position: inherit;
+  background: linear-gradient(
+    to top,
+    rgba(0, 0, 0, 0) 0%,
+    rgba(0, 0, 0, 0.5) 20%,
+    rgba(0, 0, 0, 0.7) 30%,
+    rgba(0, 0, 0, 0.8) 70%,
+    rgba(0, 0, 0, 0.8) 100%
+  ) !important;
+
+  backdrop-filter: blur(2px);
+}
+
+.biglogocontainer_white {
+  width: 100%;
+  height: 100%;
+  position: inherit;
+  background: linear-gradient(
+    to top,
+    rgba(255, 255, 255, 0) 0%,
+    rgba(255, 255, 255, 0.5) 20%,
+    rgba(255, 255, 255, 0.7) 30%,
+    rgba(255, 255, 255, 0.8) 70%,
+    rgba(255, 255, 255, 0.8) 100%
+  ) !important;
+
+  backdrop-filter: blur(2px);
 }
 </style>
