@@ -182,52 +182,19 @@ async function add_nineone_search() {
   searchresult.value = [...searchresult.value, ...nineone_result];
 }
 
-async function add_guitarian_topsongs() {
-  let guitarian_result = await useFetch(
-    "https://7aof7x0rkc.execute-api.us-east-1.amazonaws.com/gettopsongs/guitarian/" +
-      encodeURIComponent(searchinput.value)
+async function gettopsongscache() {
+  let result = await useFetch(
+    "https://3vgl7nw2c9.execute-api.us-east-1.amazonaws.com/cache/topsongs"
   );
-  guitarian_result = guitarian_result.data.value.body;
-  topsongs.value.push(...guitarian_result);
-}
-
-async function add_nineone_topsongs() {
-  let nineone_result = await useFetch(
-    "https://7aof7x0rkc.execute-api.us-east-1.amazonaws.com/gettopsongs/nineone/" +
-      encodeURIComponent(searchinput.value)
-  );
-  nineone_result = nineone_result.data.value.body;
-  topsongs.value.push(...nineone_result);
-}
-
-async function add_applemusic_topsongs() {
-  let applemusic_result = await useFetch(
-    "https://7aof7x0rkc.execute-api.us-east-1.amazonaws.com/gettopsongs/applemusic/" +
-      encodeURIComponent(searchinput.value)
-  );
-  applemusic_result = applemusic_result.data.value.body;
-  topsongs.value.push(...applemusic_result);
-}
-
-async function add_spotify_topsongs() {
-  let spotify_result = await useFetch(
-    "https://7aof7x0rkc.execute-api.us-east-1.amazonaws.com/gettopsongs/spotify/" +
-      encodeURIComponent(searchinput.value)
-  );
-  spotify_result = spotify_result.data.value.body;
-  topsongs.value.push(...spotify_result);
+  result = result.data.value.topsongs;
+  topsongs.value = result;
 }
 
 async function gettopsongs() {
   smallloading.value = true;
   showtopsongs.value = [];
   if (topsongs.value.length == 0) {
-    await Promise.all([
-      add_guitarian_topsongs(),
-      add_nineone_topsongs(),
-      add_applemusic_topsongs(),
-      //   add_spotify_topsongs(),
-    ]);
+    await gettopsongscache();
   }
   for (var j = 0; j < 10; j++) {
     const randomindex = Math.floor(Math.random() * topsongs.value.length);
