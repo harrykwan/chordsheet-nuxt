@@ -123,7 +123,7 @@
           > -->
             </div>
 
-            <div class="card-bottom p-3">
+            <div class="card-bottom p-3" @click="initpage">
               <h1 class="color-white mb-n1">男歌手</h1>
               <p class="color-white mb-0 opacity-60">Click Me</p>
             </div>
@@ -256,7 +256,8 @@
 const loading = useLoadingScreen();
 const theme = useTheme();
 loading.value = true;
-onMounted(() => {
+
+function initpage() {
   if (process.client) {
     setTimeout(() => {
       try {
@@ -268,6 +269,10 @@ onMounted(() => {
       }
     }, 100);
   }
+}
+
+onMounted(() => {
+  initpage();
 });
 </script>
 
