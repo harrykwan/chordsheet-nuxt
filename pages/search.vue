@@ -67,7 +67,7 @@
 
           <div
             class="card card-style preload-img"
-            data-src="images/pictures/18.jpg"
+            data-src="images/mic.webp"
             data-card-height="130"
           >
             <div class="card-center ms-3">
@@ -81,16 +81,27 @@
                 >GO</a
               >
             </div>
-            <div class="card-overlay bg-black opacity-80"></div>
+            <div class="card-overlay bg-black opacity-60"></div>
           </div>
 
           <div
             class="search-trending card card-style"
-            v-if="showtopsongs.length > 0"
+            v-if="showtopsongs.length > 0 || smallloading2"
           >
             <div class="content mb-2">
               <h3>人氣歌曲</h3>
               <p class="font-11 mt-n2">其他人在聽什麼？</p>
+            </div>
+
+            <div v-if="smallloading2" class="mt-2 mb-2">
+              <div class="content">
+                <div class="d-flex justify-content-center">
+                  <div
+                    class="spinner-border color-red-dark"
+                    role="status"
+                  ></div>
+                </div>
+              </div>
             </div>
             <div class="list-group list-custom-small me-3 ms-3">
               <a
@@ -117,12 +128,14 @@
 
 <script setup>
 const searchinput = ref("");
-const topsongs = ref([]);
+var topsongs = [];
+var topsongscache = "";
 const showtopsongs = ref([]);
 const searchresult = useSearchResult();
 const chordsheet = useChordSheet();
 const loading = useLoadingScreen();
 const smallloading = ref(false);
+const smallloading2 = ref(false);
 loading.value = true;
 
 async function add_google_search() {
@@ -187,22 +200,24 @@ async function gettopsongscache() {
     "https://3vgl7nw2c9.execute-api.us-east-1.amazonaws.com/cache/topsongs"
   );
   result = result.data.value.topsongs;
-  topsongs.value = result;
+  topsongs = [...result];
+  topsongscache = [...result];
 }
 
 async function gettopsongs() {
-  smallloading.value = true;
+  smallloading2.value = true;
   showtopsongs.value = [];
-  if (topsongs.value.length == 0) {
-    await gettopsongscache();
+  if (topsongs.length <= 10) {
+    if (!topsongscache) await gettopsongscache();
+    else topsongs = [...topsongscache];
   }
   for (var j = 0; j < 10; j++) {
-    const randomindex = Math.floor(Math.random() * topsongs.value.length);
-    const topsong = topsongs.value.splice(randomindex, 1)[0];
+    const randomindex = Math.floor(Math.random() * topsongs.length);
+    const topsong = topsongs.splice(randomindex, 1)[0];
     showtopsongs.value.push(topsong);
   }
 
-  smallloading.value = false;
+  smallloading2.value = false;
 }
 
 function choosetopsong(song_name) {
