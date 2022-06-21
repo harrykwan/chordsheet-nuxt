@@ -68,7 +68,7 @@
           >
             <div class="card-body my-3">
               <h1 class="color-white">WHY ME</h1>
-              <p class="color-white opacity-60 mb-0" @click="initpage">
+              <p class="color-white opacity-60 mb-0">
                 揾譜？執譜？學音樂？依度可以一次過滿足你。升降Key、學 guitar tab
                 冇廣告、唔使登入!
               </p>
@@ -171,7 +171,7 @@
           </div>
         </div>
 
-        <div class="divider divider-margins"></div>
+        <div class="divider divider-margins" hidden></div>
 
         <div
           hidden
@@ -186,7 +186,7 @@
           <div class="card-overlay bg-black opacity-60"></div>
         </div>
 
-        <div class="divider divider-margins"></div>
+        <div class="divider divider-margins" hidden></div>
 
         <div class="content mt-0" hidden>
           <h4>This is an Image Gallery</h4>
@@ -244,7 +244,7 @@
           </div>
         </div>
 
-        <div class="divider divider-margins"></div>
+        <div class="divider divider-margins" hidden></div>
 
         <FooterNotes />
       </div>
