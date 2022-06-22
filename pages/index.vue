@@ -307,6 +307,10 @@ onMounted(() => {
 
 .brightness {
   -webkit-animation: brightness 3s infinite;
+  -moz-animation: brightness 4s ease;
+  -ms-animation: brightness 4s ease;
+  -o-animation: brightness 4s ease;
+  animation: brightness 4s ease;
 }
 
 .biglogo {
