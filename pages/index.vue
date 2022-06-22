@@ -300,10 +300,10 @@ onMounted(() => {
 @-webkit-keyframes brightness {
   0%,
   100% {
-    -webkit-filter: brightness(120%);
+    -webkit-filter: brightness(100%);
   }
   50% {
-    -webkit-filter: brightness(120%) drop-shadow(5px 5px 12px #aaa);
+    -webkit-filter: brightness(100%) drop-shadow(5px 5px 12px #aaa);
   }
 }
 
