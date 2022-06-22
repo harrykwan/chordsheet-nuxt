@@ -301,16 +301,16 @@ onMounted(() => {
     -webkit-filter: brightness(120%);
   }
   50% {
-    -webkit-filter: brightness(120%) saturate(2) drop-shadow(5px 5px 10px #aaa);
+    -webkit-filter: brightness(120%) drop-shadow(5px 5px 12px #aaa);
   }
 }
 
 .brightness {
   -webkit-animation: brightness 3s infinite;
-  -moz-animation: brightness 4s ease;
-  -ms-animation: brightness 4s ease;
-  -o-animation: brightness 4s ease;
-  animation: brightness 4s ease;
+  -moz-animation: brightness 4s infinite;
+  -ms-animation: brightness 4s infinite;
+  -o-animation: brightness 4s infinite;
+  animation: brightness 4s infinite;
 }
 
 .biglogo {
