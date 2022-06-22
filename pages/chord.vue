@@ -20,14 +20,32 @@
                 }"
                 v-if="chordshow"
               >
-                <pre :style="'font-size: ' + fontsize + 'px;'" class="chord">{{
-                  item.chord
-                }}</pre>
+                <pre
+                  :style="
+                    'font-size: ' +
+                    fontsize +
+                    'px;' +
+                    'line-height: ' +
+                    fontsize * 1.6 +
+                    'px;'
+                  "
+                  class="chord"
+                  >{{ item.chord }}</pre
+                >
               </div>
               <div v-if="lyricshow">
-                <pre :style="'font-size: ' + fontsize + 'px;'" class="lyric">{{
-                  item.lyric
-                }}</pre>
+                <pre
+                  :style="
+                    'font-size: ' +
+                    fontsize +
+                    'px;' +
+                    'line-height: ' +
+                    fontsize * 1.6 +
+                    'px;'
+                  "
+                  class="lyric"
+                  >{{ item.lyric }}</pre
+                >
               </div>
             </div>
           </div>
