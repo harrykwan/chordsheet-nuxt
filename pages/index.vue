@@ -31,7 +31,10 @@
             biglogocontainer_white: theme == 'light',
           }"
         >
-          <img class="biglogo" :src="'/images/buskking-yellow.png'" />
+          <img
+            class="biglogo brightness"
+            :src="'/images/buskking-yellow.png'"
+          />
         </div>
 
         <div class="card-bottom disabled mb-5 pb-3 mt-2 text-center">
@@ -292,6 +295,20 @@ onMounted(() => {
   margin-left: -85px;
 }
 
+@-webkit-keyframes brightness {
+  0%,
+  100% {
+    -webkit-filter: brightness(120%);
+  }
+  50% {
+    -webkit-filter: brightness(120%) saturate(2) drop-shadow(5px 5px 10px #aaa);
+  }
+}
+
+.brightness {
+  -webkit-animation: brightness 3s infinite;
+}
+
 .biglogo {
   position: inherit;
   width: 300px;
@@ -306,6 +323,7 @@ onMounted(() => {
   border: 0px solid black;
   border-radius: 50%;
   /* background: black; */
+  filter: brightness(120%);
 }
 
 .biglogocontainer_black {
