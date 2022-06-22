@@ -23,6 +23,8 @@
           background: none;
           background-image: url('images/guitar.jpg');
           margin-top: -50px;
+          background-repeat: no-repeat;
+          background-size: 100vw;
         "
       >
         <div
