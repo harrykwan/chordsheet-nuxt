@@ -136,6 +136,7 @@ const chordsheet = useChordSheet();
 const loading = useLoadingScreen();
 const smallloading = ref(false);
 const smallloading2 = ref(false);
+const route = useRoute();
 loading.value = true;
 
 async function add_google_search() {
@@ -284,6 +285,9 @@ onMounted(() => {
       window.scrollTo(0, 0);
       setTimeout(() => {
         init_template();
+        if (route.hash) {
+          choosetopsong(route.hash.split("#")[1]);
+        }
         loading.value = false;
       }, 100);
     } catch (e) {

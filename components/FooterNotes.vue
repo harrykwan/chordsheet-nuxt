@@ -40,3 +40,8 @@
     <div class="clear"></div>
   </div>
 </template>
+<style scoped>
+.footer {
+  margin-bottom: 20px !important;
+}
+</style>

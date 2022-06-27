@@ -116,9 +116,10 @@
           </p> -->
 
           <div
-            class="card card-style"
+            class="card card-style myclickable"
             data-card-height="170"
             style="background-image: url(images/male.jpg)"
+            v-on:click="choosesingertype('male')"
           >
             <div class="card-top p-2">
               <!-- <a
@@ -136,9 +137,10 @@
           </div>
 
           <div
-            class="card card-style"
+            class="card card-style myclickable"
             data-card-height="170"
             style="background-image: url(images/female.jpg)"
+            v-on:click="choosesingertype('female')"
           >
             <div class="card-top p-2">
               <!-- <a
@@ -156,9 +158,10 @@
           </div>
 
           <div
-            class="card card-style"
+            class="card card-style myclickable"
             data-card-height="170"
             style="background-image: url(images/tgt.jpg)"
+            v-on:click="choosesingertype('band')"
           >
             <div class="card-top p-2">
               <!-- <a
@@ -260,7 +263,31 @@
 <script setup>
 const loading = useLoadingScreen();
 const theme = useTheme();
+const singerlist = useSingerList();
 loading.value = true;
+
+async function choosesingertype(typename) {
+  loading.value = true;
+  let cachename = "";
+  let title = "";
+  if (typename == "male") {
+    cachename = "male_artists";
+    title = "男歌手";
+  } else if (typename == "female") {
+    cachename = "female_artists";
+    title = "女歌手";
+  } else {
+    cachename = "band_artists";
+    title = "組合";
+  }
+  let result = await useFetch(
+    "https://3vgl7nw2c9.execute-api.us-east-1.amazonaws.com/cache/" + cachename
+  );
+
+  singerlist.value = result.data.value.list;
+
+  navigateTo("/singer#" + title);
+}
 
 function initpage() {
   if (process.client) {
@@ -362,5 +389,9 @@ onMounted(() => {
   ) !important;
 
   backdrop-filter: blur(2px);
+}
+
+.myclickable:hover {
+  cursor: pointer;
 }
 </style>
