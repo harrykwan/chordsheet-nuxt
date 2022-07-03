@@ -1,6 +1,6 @@
 <template>
   <div>
-    <div class="chordfooter">
+    <div class="chordfooter" :hidden="editor">
       <div data-menu="menu-settings"><i class="fa fa-cog"></i></div>
     </div>
 
@@ -145,6 +145,7 @@ import axios from "axios";
 const chordsheet = useChordSheet();
 const lyricshow = useLyricShow();
 const chordshow = useChordShow();
+const editor = useEditor();
 const fontsize = useFontSize();
 const theme = useTheme();
 

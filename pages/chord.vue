@@ -2,7 +2,16 @@
   <div>
     <ChordFooterNav />
     <ChordHeaderNav />
-    <div id="page" v-if="chordsheet">
+    <div v-if="editor && chordsheet">
+      <div class="page-content header-clear-medium">
+        <div class="card card-style">
+          <div class="content" id="chordcontent">
+            <textarea id="chordsheeteditor" :value="chordsheettext"></textarea>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div id="page" v-if="chordsheet" :hidden="editor">
       <div class="page-content header-clear-medium">
         <div class="card card-style">
           <div class="content">
@@ -61,8 +70,19 @@ const chordsheet = useChordSheet();
 const lyricshow = useLyricShow();
 const chordshow = useChordShow();
 const fontsize = useFontSize();
+const editor = useEditor();
 const theme = useTheme();
-console.log(chordsheet.value);
+
+const chordsheettext = ref("");
+
+watch(editor, () => {
+  if (editor.value) {
+    chordsheettext.value = chordsheet.value.chordsheet
+      .map((x) => (x.chord ? x.chord : "") + "\n" + (x.lyric ? x.lyric : ""))
+      .join("\n");
+  }
+});
+
 loading.value = false;
 
 onMounted(() => {
@@ -71,6 +91,7 @@ onMounted(() => {
   }
   if (process.client) {
     try {
+      console.log(document.getElementById("editor"));
       window.scrollTo(0, 0);
       setTimeout(() => {
         init_template();
@@ -96,5 +117,15 @@ pre {
   word-wrap: break-word; /* Internet Explorer 5.5+ */
   margin-top: 0px;
   margin-bottom: 0px;
+}
+
+textarea {
+  width: 100%;
+  border: 5px dotted #ab9103;
+  border-radius: 10px;
+  resize: none;
+  height: calc(100vh - 150px);
+  font-family: "Segoe UI", Arial, sans-serif;
+  padding: 5px;
 }
 </style>

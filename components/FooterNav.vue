@@ -54,7 +54,7 @@
             <i class="fa fa-angle-right"></i>
           </a>
         </div>
-        <div class="list-group list-custom-large">
+        <!-- <div class="list-group list-custom-large">
           <a data-menu="menu-highlights" href="#">
             <i class="fa font-14 fa-tint bg-green-dark rounded-s"></i>
             <span>Page Highlight</span>
@@ -69,7 +69,7 @@
             <span class="badge bg-highlight color-white">NEW</span>
             <i class="fa fa-angle-right"></i>
           </a>
-        </div>
+        </div> -->
       </div>
     </div>
   </div>
