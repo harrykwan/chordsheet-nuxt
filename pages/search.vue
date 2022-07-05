@@ -127,6 +127,7 @@
 </template>
 
 <script setup>
+const chordsheetid = useChordSheetId();
 const searchinput = ref("");
 var topsongs = [];
 var topsongscache = "";
@@ -138,6 +139,7 @@ const smallloading = ref(false);
 const smallloading2 = ref(false);
 const route = useRoute();
 loading.value = true;
+chordsheetid.value = "";
 
 async function add_google_search() {
   const google_result = await googleit(searchinput.value);

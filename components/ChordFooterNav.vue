@@ -1,6 +1,8 @@
 <template>
   <div>
     <div class="chordfooter" :hidden="editor">
+      <div class="mb-3"><i class="fa fa-play"></i></div>
+      <div class="mb-3" @click="savenewsheet"><i class="fa fa-save"></i></div>
       <div data-menu="menu-settings"><i class="fa fa-cog"></i></div>
     </div>
 
@@ -148,10 +150,48 @@ const chordshow = useChordShow();
 const editor = useEditor();
 const fontsize = useFontSize();
 const theme = useTheme();
+const chordsheetid = useChordSheetId();
 
 function toggletheme() {
   if (theme.value == "dark") theme.value = "light";
   else theme.value = "dark";
+}
+
+function appendnewsheet(id) {
+  if (process.client) {
+    let nowlist = [];
+
+    try {
+      JSON.parse(localStorage.getItem("chordsheetlist"));
+    } catch (e) {}
+    nowlist.push(id);
+    localStorage.setItem("chordsheetlist", JSON.stringify(nowlist));
+  }
+}
+
+function savenewsheet() {
+  if (process.client) {
+    let nowsheetid = "";
+    if (chordsheetid.value) nowsheetid = chordsheetid.value;
+    else {
+      nowsheetid = uuidv4();
+      appendnewsheet(nowsheetid);
+    }
+    const tempdata = {
+      updatetime: Date.now(),
+      chordsheet: chordsheet.value,
+    };
+    localStorage.setItem(nowsheetid, JSON.stringify(tempdata));
+  }
+}
+
+function uuidv4() {
+  return ([1e7] + -1e3 + -4e3 + -8e3 + -1e11).replace(/[018]/g, (c) =>
+    (
+      c ^
+      (crypto.getRandomValues(new Uint8Array(1))[0] & (15 >> (c / 4)))
+    ).toString(16)
+  );
 }
 
 async function transposedown() {
@@ -213,6 +253,14 @@ async function togglechord() {
   z-index: 10;
   font-size: 35px;
   color: #ab9103;
-  opacity: 0.8;
+}
+
+.chordfooter > div {
+  opacity: 0.4;
+}
+
+.chordfooter > div:hover {
+  opacity: 1;
+  cursor: pointer;
 }
 </style>

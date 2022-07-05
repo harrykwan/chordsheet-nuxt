@@ -65,6 +65,7 @@
 </template>
 
 <script setup>
+const router = useRouter();
 const loading = useLoadingScreen();
 const chordsheet = useChordSheet();
 const lyricshow = useLyricShow();
@@ -72,8 +73,9 @@ const chordshow = useChordShow();
 const fontsize = useFontSize();
 const editor = useEditor();
 const theme = useTheme();
-
 const chordsheettext = ref("");
+
+editor.value = false;
 
 watch(editor, () => {
   if (editor.value) {
@@ -87,11 +89,11 @@ loading.value = false;
 
 onMounted(() => {
   if (!chordsheet.value) {
-    navigateTo("/search");
+    // navigateTo("/search");
+    router.back();
   }
   if (process.client) {
     try {
-      console.log(document.getElementById("editor"));
       window.scrollTo(0, 0);
       setTimeout(() => {
         init_template();

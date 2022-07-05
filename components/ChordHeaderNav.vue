@@ -1,9 +1,9 @@
 <template>
   <div v-if="chordsheet" class="header header-fixed header-logo-center">
     <div class="header-title">{{ chordsheet.song_name }}</div>
-    <NuxtLink to="/search" class="header-icon header-icon-1"
+    <a href="#" @click="backpage" class="header-icon header-icon-1"
       ><i class="fas fa-arrow-left"></i
-    ></NuxtLink>
+    ></a>
     <a
       href="#"
       @click="toogleeditor"
@@ -20,11 +20,16 @@ import axios from "axios";
 const loading = useLoadingScreen();
 const editor = useEditor();
 const chordsheet = useChordSheet();
+const router = useRouter();
 
 function toogleeditor() {
   if (editor.value) editordone();
 
   editor.value = !editor.value;
+}
+
+function backpage() {
+  router.back();
 }
 
 async function editordone() {

@@ -2,17 +2,20 @@
   <div>
     <div id="footer-bar" class="footer-bar-1">
       <NuxtLink to="/" :class="{ 'active-nav': pagenum == 1 }"
-        ><i class="fa fa-home"></i><span>介紹</span></NuxtLink
+        ><i class="fa fa-home"></i><span>主頁</span></NuxtLink
       >
-      <NuxtLink :class="{ 'active-nav': pagenum == 2 }"
-        ><i class="fa fa-star"></i><span>潮流</span></NuxtLink
-      >
-      <NuxtLink :class="{ 'active-nav': pagenum == 3 }"
+      <NuxtLink :class="{ 'active-nav': pagenum == 3 }" to="/mysongs"
         ><i class="fa fa-heart"></i><span>已存</span></NuxtLink
       >
+
+      <!-- <NuxtLink :class="{ 'active-nav': pagenum == 2 }"
+        ><i class="fa fa-star"></i><span>潮流</span></NuxtLink
+      > -->
+
       <NuxtLink :class="{ 'active-nav': pagenum == 4 }" to="/search"
         ><i class="fa fa-search"></i><span>揾譜</span></NuxtLink
       >
+
       <NuxtLink href="#" data-menu="menu-settings"
         ><i class="fa fa-cog"></i><span>設定</span></NuxtLink
       >
@@ -90,6 +93,8 @@ watch(route, () => {
 function coloricon() {
   if (route.path == "/") {
     pagenum.value = 1;
+  } else if (route.path.indexOf("mysongs") != -1) {
+    pagenum.value = 3;
   } else if (route.path.indexOf("search") != -1) {
     pagenum.value = 4;
   }
